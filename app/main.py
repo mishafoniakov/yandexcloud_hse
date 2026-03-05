@@ -5,6 +5,8 @@ import uvicorn
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File
 
+from services import YandexStudioAIOilService
+
 #from models import User, Contact, FeedBack, SimpleResponse
 
 UPLOAD_DIR = Path("uploads")
@@ -12,17 +14,11 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 
 app = FastAPI()
 
-@app.get("/image")
-def image():
-    pass
-
 @app.get("/image_information")
-def read_users():
-    pass
-
-@app.get("/uuid")
-def read_feedback():
-    pass
+def get_information(message: str):
+    yandex_studio_ai_oil_service = YandexStudioAIOilService(message)
+    result = yandex_studio_ai_oil_service()
+    return result
 
 @app.post('/upload') 
 def upload_file(file: UploadFile = File(...)):
