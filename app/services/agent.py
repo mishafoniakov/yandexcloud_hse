@@ -1,5 +1,10 @@
 import os
+from pathlib import Path
+import uuid
+import base64
+
 import openai
+import shutil
 from dotenv import load_dotenv
 
 load_dotenv()

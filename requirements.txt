@@ -3,3 +3,5 @@ fastapi
 python-multipart
 python-dotenv
 openai
+ultralytics
+transformers
